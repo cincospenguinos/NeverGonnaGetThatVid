@@ -39,6 +39,11 @@ function showVideoInfo(videoInfo){
 
 	container.append(containerRow);
 	container.append("<div class='btn btn-success btn-lg' id='download-button'><strong>Download this video</strong></div>");
+
+	$('#download-button').click(function(e){
+		e.preventDefault();
+		window.location.href = '/videos/' + videoInfo.video_id + '.mp4';
+	});
 }
 
 /* <script>alert('haxxed');</script>https://www.youtube.com/watch?v=Dkm8Hteeh6M */
@@ -53,7 +58,6 @@ function validateURL(url){
 
 $(document).ready(function(){
 	$('#submit-button').click(function(){
-		
 		var url = $('#youtube-url-input').val();
 		if(!validateURL(url)){
 			showMessage(false, 'The URL provided is not valid');

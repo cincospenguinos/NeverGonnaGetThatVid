@@ -4,6 +4,7 @@ require 'sinatra'
 require 'json'
 require 'yaml'
 require 'net/http'
+require 'fileutils'
 
 configure do
   set :api_url, 'https://www.googleapis.com/youtube/v3/videos'
@@ -42,13 +43,16 @@ get '/' do
 end
 
 # Returns the video
-get '/*' do
-  # TODO: This
-end
+# get '/videos/*' do
+#   # TODO: This
+#   'hello'
+# end
 
-# Returns the status of the video provided
-get '/status/*' do
-
+post '/videos/*' do
+  # This is where we need to prep up the video for the user
+  Dir.chdir('public/videos') do
+    FileUtils.cp('never_gonna_give_you_up.mp4', "#{params['video_id']}.mp4")
+  end
 end
 
 # The endpoint URL to "get" the video
@@ -65,6 +69,7 @@ post '/' do
         send_response(false, 'Could not find a video at that URL')
       else
         # TODO: This is where we "grab" the video and setup a link to it
+        video_info['video_id'] = extract_video_id(params['video_url'])
         send_response(true, 'Grabbing the video...', video_info)
       end
     end
