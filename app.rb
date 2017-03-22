@@ -7,11 +7,16 @@ require 'json'
 helpers do
 
   def get_video_id(video_url)
+    return nil unless valid_url(video_url)
     nil
   end
 
   def send_response(successful, message)
     { successful: successful, message: message }.to_json
+  end
+
+  def valid_url(video_url)
+    
   end
 end
 
