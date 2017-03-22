@@ -17,13 +17,21 @@
   </head>
   <body>
     <div class='jumbotron'>
-      <div class='container'>
+      <div class='container' style='padding-bottom: 10px;'>
         <h1>YouTube Download</h1>
         <p>Download your favorite YouTube videos to watch offline!</p>
-        <form class='form-inline'>
+        <form class='form-inline' id='youtube-url-form'>
             <input class="form-control" type="url" value="" id="youtube-url-input" placeholder="URL">
-            <input class="btn btn-primary btn-large" type="button" value="GO"/>
+            <input class="btn btn-primary btn-large" type="button" value="GO" id='submit-button'/>
         </form>
+      </div>
+      <div class='container' id='alert-space'>
+        <div class="alert alert-success" role="alert">
+          <strong>It worked!</strong> It's good to see that it's doing its job!
+        </div>
+        <div class="alert alert-danger" role="alert">
+          <strong>Oh No!</strong> This is an error!
+        </div>
       </div>
     </div>
   </body>
