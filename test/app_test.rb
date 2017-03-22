@@ -46,12 +46,12 @@ class HelloWorldTest < Test::Unit::TestCase
   end
 
   def test_valid_url
-    post '/', params = { vidoe_url: 'https://www.youtube.com/watch?v=Dkm8Hteeh6M'}
+    post '/', params = { video_url: 'https://www.youtube.com/watch?v=Dkm8Hteeh6M'}
     body = JSON.parse(last_response.body)
     assert last_response.ok?
     assert body['successful']
 
-    post '/', params = { vidoe_url: 'https://youtu.be/CcHt9tW8oo0'}
+    post '/', params = { video_url: 'https://youtu.be/CcHt9tW8oo0'}
     body = JSON.parse(last_response.body)
     assert last_response.ok?
     assert body['successful']

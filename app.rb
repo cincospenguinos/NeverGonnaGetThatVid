@@ -11,18 +11,24 @@ helpers do
     nil
   end
 
-  def send_response(successful, message)
-    { successful: successful, message: message }.to_json
+  def send_response(successful, message, video_info = nil)
+    # successful => bool, message => string, video_info => hash with details of the video
+    { successful: successful, message: message, video_info: video_info }.to_json
   end
 
   def valid_url(video_url)
-    
+    video_url.match(/www.youtube.com\/watch\?v=[a-zA-Z0-9]+/) || video_url.match(/www.youtu.be\/[0-9A-Za-z]+/)
   end
 end
 
 # The main page
 get '/' do
   erb :index
+end
+
+# Returns the video
+get '/*' do
+  # TODO: This
 end
 
 # The endpoint URL to "get" the video
