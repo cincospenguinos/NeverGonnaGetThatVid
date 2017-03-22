@@ -9,3 +9,15 @@ body {
 .alert a {
 	color: #3e3f3a;
 }
+
+.center {
+    text-align:center;
+}
+
+.center form {
+    display:inline-block;
+}
+
+.btn {
+	font-size: large;
+}

@@ -26,7 +26,7 @@ helpers do
   end
 
   def extract_video_id(video_url)
-    return nil unless video_url.match(/www.youtube.com\/watch\?v=\S+/) || video_url.match(/youtu.be\/\S+/)
+    return nil unless video_url.match(/\A(https:\/\/){0,1}www.youtube.com\/watch\?v=\S+/) || video_url.match(/\A(https:\/\/){0,1}youtu.be\/\S+/)
 
     if video_url.match(/www.youtube.com\/watch\?v=[a-zA-Z0-9]+/)
       video_url[/v=\S+/].gsub('v=', '')

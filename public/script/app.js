@@ -22,6 +22,28 @@ function showMessage(successful, message){
 	div.appendTo(alertSpace);
 }
 
+function showVideoInfo(videoInfo){
+	console.log(videoInfo.items[0].snippet.thumbnails.default.url);
+	var container = $('#video-info-space');
+	container.html('');
+	$('#alert-space').html('');
+
+	var containerRow = $('<div/>', { 'class':'row' });
+	var imageSpace = $('<div/>', { 'class':'col-md-4' });
+	imageSpace.html('<img src="' + videoInfo.items[0].snippet.thumbnails.default.url + '" />');
+	containerRow.append(imageSpace);
+
+	var titleSpace = $('<div/>', { 'class':'col-md-8' });
+	titleSpace.append('<h2><a href=' + videoInfo.url + '>' + videoInfo.items[0].snippet.title + '</a></h2>');
+	containerRow.append(titleSpace);
+
+	container.append(containerRow);
+	container.append("<div class='btn btn-success btn-lg' id='download-button'><strong>Download this video</strong></div>");
+}
+
+/* <script>alert('haxxed');</script>https://www.youtube.com/watch?v=Dkm8Hteeh6M */
+
+
 /**
  * Validates the URL provided
  */
@@ -40,11 +62,16 @@ $(document).ready(function(){
 				url: '/',
 				data: { video_url: url },
 				success: function(e){
-					console.log(e);
+					e = JSON.parse(e);
+
+					if(e.successful){
+						// Show info about the video here!
+						showVideoInfo(e.video_info);
+					} else {
+						showMessage(e.successful, e.message);
+					}
 				}
 			});
 		}
-
-		var data = {};
 	});
 });

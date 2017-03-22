@@ -38,6 +38,13 @@ class HelloWorldTest < Test::Unit::TestCase
     assert !body['successful']
   end
 
+  def test_invalid_url_xss_attack
+    post '/', params = { video_url: '<script>alert("haxxed");</script>www.youtube.com/wach?v=ABUNCHOFSHIZ'}
+    body = JSON.parse(last_response.body)
+    assert last_response.ok?
+    assert !body['successful']
+  end
+
   def test_invalid_url_video_does_not_exist
     post '/', params = { video_url: 'www.youtube.com/watch?v=SOMEBULLSHIZID'}
     body = JSON.parse(last_response.body)
