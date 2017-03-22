@@ -5,3 +5,7 @@ body {
 .alert {
 	color: #3e3f3a;
 }
+
+.alert a {
+	color: #3e3f3a;
+}
