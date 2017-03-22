@@ -1,13 +1,30 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <link type='stylesheet' text='text/css' rel='style/bootstrap.min.css'/>
-    <link type='stylesheet' text='text/css' rel='style/bootstrap-theme.min.css'/>
+    <!-- Some meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="YouTube video piracy">
+    <meta name="author" content="cincospenguinos">
+
+    <!-- Files -->
+    <link rel='stylesheet' text='text/css' href='style/bootstrap.min.css'/>
+    <link rel='stylesheet' text='text/css' href='style/bootstrap-theme.min.css'/>
+    <link rel='stylesheet' text='text/css' href='style/global_stylesheet.css'/>
     <script src='script/jquery.min.js'></script>
     <script src='script/bootstrap.min.js'></script>
     <script src='script/app.js'></script>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <div class='jumbotron'>
+      <div class='container'>
+        <h1>YouTube Download</h1>
+        <p>Download your favorite YouTube videos to watch offline!</p>
+        <form class='form-inline'>
+            <input class="form-control" type="url" value="" id="youtube-url-input" placeholder="URL">
+            <input class="btn btn-primary btn-large" type="button" value="GO"/>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
