@@ -42,7 +42,7 @@ function showVideoInfo(videoInfo){
 
 	$('#download-button').click(function(e){
 		e.preventDefault();
-		window.location.href = '/videos/' + videoInfo.video_id + '.mp4';
+		window.location.href = '/videos/never_gonna_give_you_up.mp4';
 	});
 }
 
